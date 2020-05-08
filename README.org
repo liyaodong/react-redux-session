@@ -1,0 +1,87 @@
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
+#+TITLE: React Redux best practices
+#+Email: mail@liyaodong.com
+#+Date:
+#+Author:
+#+EXPORT_FILE_NAME: index.html
+#+OPTIONS: timestamp:nil, toc:nil, reveal_title_slide:nil, num:nil,
+#+REVEAL_INIT_OPTIONS: history: true
+#+REVEAL_TRANS: concave
+#+REVEAL_EXTRA_CSS: ./style.css
+#+REVEAL_HTML: <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,900" rel="stylesheet">
+
+* React Redux
+  #+REVEAL_HTML: <img class="amp-logo" src="./react-redux-logo.jpg">
+* Outline
+  - What is react and redux
+  - How data flows from backend to react UI
+  - Type of state
+  - Debugging tips
+* What is react
+  #+REVEAL_HTML: <img class="stretch" src="https://media.giphy.com/media/xL7PDV9frcudO/giphy.gif">
+** Possible answer
+   - UI library
+   - Javascript Framework
+   - Open source project
+   - Virtual DOM
+   - Component based framework
+   - JSX
+** Might be
+   #+begin_src js
+   const react = props: UI => render(props);
+   const reactDOM = reactElement: DOM => renderToBrowser(reactElement);
+   const reactNative = reactElement: iOS hierarchy => renderToIOS(reactElement);
+   #+end_src
+** Summary
+   - Write UI with component
+   - Declarative way to write UI
+   - Manage UI state by state or props
+   - Collect user input and manage it by state
+   - Update UI when state change
+* What is redux and why
+  #+REVEAL_HTML: <img class="stretch" src="https://media.giphy.com/media/xL7PDV9frcudO/giphy.gif">
+** Cross component communication
+  #+REVEAL_HTML: <img class="stretch" src="https://github.com/liyaodong/Frontend-Workshop/raw/master/redux-workshop/md/6024ef30-312a-4c7c-bfd2-eb72fba097ef.png">
+** How data flows inside redux
+  #+REVEAL_HTML: <img class="stretch" src="https://camo.githubusercontent.com/5aba89b6daab934631adffc1f301d17bb273268b/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6d656469612d702e736c69642e65732f75706c6f6164732f3336343831322f696d616765732f323438343535322f415243482d5265647578322d7265616c2e676966">
+** Different part of redux
+   - action(domain/event, todos/created)
+   - reducer
+   - selector
+   - middleware(redux-thunk)
+** React state vs redux
+   - Any other component care about this state?
+   - Do you want to cache the data?
+** How to split slice for redux
+   - Split by domain(global level)
+   - Split by components
+** Testing redux
+   - Pure function
+   - Composable selector
+* State from end to end
+  render -> fetch -> store response -> trigger UI update
+** Type of the state
+   - state from backend
+   - state that redux needed
+   - state for component(useSelector)
+   - state inside component
+** Type of the state
+   - business/domain level
+   - UI level
+* Debugging Tips
+** DevTool
+   - [[https://github.com/reduxjs/redux-devtools][Redux DevTool]]
+   - [[https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en][React DevTool]]
+   - [[https://developers.google.com/web/tools/chrome-devtools/javascript/breakpoints][Chrome DevTool debug javascript]]
+** Split the program into smaller pieces
+   - React Component Props
+   - Redux actions and payload
+   - Redux state diff
+   - Backend Data(Chrome devtool network panel)
+* Q&A
+* Further reading
+  - [[https://overreacted.io/react-as-a-ui-runtime/][React as a UI Runtime]]
+  - [[https://redux.js.org/style-guide/style-guide][Redux style guide]]
+  - [[https://attachments-cdn.shimo.im/pk0Y0snx7DozD4EU/C_-_1_-_%25E6%25A8%25A1%25E5%259E%258B%25E9%25A9%25B1%25E5%258A%25A8%25E5%25BC%2580%25E5%258F%2591_-_%25E6%25B1%25AA%25E5%25BF%2597%25E6%2588%2590.pdf][FDConf 2019 汪志成 - 模型驱动开发]]
+  - [[https://egghead.io/instructors/dan-abramov][Redux author Dan Abramov egghead videos]]
+* Thanks

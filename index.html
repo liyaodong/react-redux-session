@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>React Redux best practices</title>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/css/theme/moon.css" id="theme"/>
+
+<link rel="stylesheet" href="./style.css"/>
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,400,900" rel="stylesheet">
+
+<section>
+<section id="slide-orgb28c276">
+<h2 id="orgb28c276">React Redux</h2>
+<img class="amp-logo" src="./react-redux-logo.jpg">
+</section>
+</section>
+<section>
+<section id="slide-org7b36b54">
+<h2 id="org7b36b54">Outline</h2>
+<ul>
+<li>What is react and redux</li>
+<li>How data flows from backend to react UI</li>
+<li>Type of state</li>
+<li>Debugging tips</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org1b5ce2e">
+<h2 id="org1b5ce2e">What is react</h2>
+<img class="stretch" src="https://media.giphy.com/media/xL7PDV9frcudO/giphy.gif">
+</section>
+<section id="slide-orgfb289a1">
+<h3 id="orgfb289a1">Possible answer</h3>
+<ul>
+<li>UI library</li>
+<li>Javascript Framework</li>
+<li>Open source project</li>
+<li>Virtual DOM</li>
+<li>Component based framework</li>
+<li>JSX</li>
+
+</ul>
+</section>
+<section id="slide-org3d11e0c">
+<h3 id="org3d11e0c">Might be</h3>
+<div class="org-src-container">
+
+<pre  class="src src-js"><code trim><span style="color: #F92672;">const</span> <span style="color: #FD971F;">react</span> = props: UI =&gt; render<span style="color: #8c8c8c;">(</span>props<span style="color: #8c8c8c;">)</span>;
+<span style="color: #F92672;">const</span> <span style="color: #FD971F;">reactDOM</span> = reactElement: DOM =&gt; renderToBrowser<span style="color: #8c8c8c;">(</span>reactElement<span style="color: #8c8c8c;">)</span>;
+<span style="color: #F92672;">const</span> <span style="color: #FD971F;">reactNative</span> = reactElement: iOS hierarchy =&gt; renderToIOS<span style="color: #8c8c8c;">(</span>reactElement<span style="color: #8c8c8c;">)</span>;
+</code></pre>
+</div>
+</section>
+<section id="slide-org9a1e5c2">
+<h3 id="org9a1e5c2">Summary</h3>
+<ul>
+<li>Write UI with component</li>
+<li>Declarative way to write UI</li>
+<li>Manage UI state by state or props</li>
+<li>Collect user input and manage it by state</li>
+<li>Update UI when state change</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org63f9af1">
+<h2 id="org63f9af1">What is redux and why</h2>
+<img class="stretch" src="https://media.giphy.com/media/xL7PDV9frcudO/giphy.gif">
+</section>
+<section id="slide-orgcd0a05d">
+<h3 id="orgcd0a05d">Cross component communication</h3>
+<img class="stretch" src="https://github.com/liyaodong/Frontend-Workshop/raw/master/redux-workshop/md/6024ef30-312a-4c7c-bfd2-eb72fba097ef.png">
+</section>
+<section id="slide-org3083b0f">
+<h3 id="org3083b0f">How data flows inside redux</h3>
+<img class="stretch" src="https://camo.githubusercontent.com/5aba89b6daab934631adffc1f301d17bb273268b/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6d656469612d702e736c69642e65732f75706c6f6164732f3336343831322f696d616765732f323438343535322f415243482d5265647578322d7265616c2e676966">
+</section>
+<section id="slide-org439e7f2">
+<h3 id="org439e7f2">Different part of redux</h3>
+<ul>
+<li>action(domain/event, todos/created)</li>
+<li>reducer</li>
+<li>selector</li>
+<li>middleware(redux-thunk)</li>
+
+</ul>
+</section>
+<section id="slide-org930db8b">
+<h3 id="org930db8b">React state vs redux</h3>
+<ul>
+<li>Any other component care about this state?</li>
+<li>Do you want to cache the data?</li>
+
+</ul>
+</section>
+<section id="slide-org45d7662">
+<h3 id="org45d7662">How to split slice for redux</h3>
+<ul>
+<li>Split by domain(global level)</li>
+<li>Split by components</li>
+
+</ul>
+</section>
+<section id="slide-org42baaab">
+<h3 id="org42baaab">Testing redux</h3>
+<ul>
+<li>Pure function</li>
+<li>Composable selector</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org44da179">
+<h2 id="org44da179">State from end to end</h2>
+<p>
+render -&gt; fetch -&gt; store response -&gt; trigger UI update
+</p>
+</section>
+<section id="slide-orgc79d578">
+<h3 id="orgc79d578">Type of the state</h3>
+<ul>
+<li>state from backend</li>
+<li>state that redux needed</li>
+<li>state for component(useSelector)</li>
+<li>state inside component</li>
+
+</ul>
+</section>
+<section id="slide-org90ad21b">
+<h3 id="org90ad21b">Type of the state</h3>
+<ul>
+<li>business/domain level</li>
+<li>UI level</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org7347dcb">
+<h2 id="org7347dcb">Debugging Tips</h2>
+<div class="outline-text-2" id="text-org7347dcb">
+</div>
+</section>
+<section id="slide-orga73c214">
+<h3 id="orga73c214">DevTool</h3>
+<ul>
+<li><a href="https://github.com/reduxjs/redux-devtools">Redux DevTool</a></li>
+<li><a href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en">React DevTool</a></li>
+<li><a href="https://developers.google.com/web/tools/chrome-devtools/javascript/breakpoints">Chrome DevTool debug javascript</a></li>
+
+</ul>
+</section>
+<section id="slide-org4d1f6aa">
+<h3 id="org4d1f6aa">Split the program into smaller pieces</h3>
+<ul>
+<li>React Component Props</li>
+<li>Redux actions and payload</li>
+<li>Redux state diff</li>
+<li>Backend Data(Chrome devtool network panel)</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org01d18a3">
+<h2 id="org01d18a3">Q&amp;A</h2>
+</section>
+</section>
+<section>
+<section id="slide-org6111923">
+<h2 id="org6111923">Further reading</h2>
+<ul>
+<li><a href="https://overreacted.io/react-as-a-ui-runtime/">React as a UI Runtime</a></li>
+<li><a href="https://redux.js.org/style-guide/style-guide">Redux style guide</a></li>
+<li><a href="https://attachments-cdn.shimo.im/pk0Y0snx7DozD4EU/C_-_1_-_%E6%A8%A1%E5%9E%8B%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91_-_%E6%B1%AA%E5%BF%97%E6%88%90.pdf">FDConf 2019 汪志成 - 模型驱动开发</a></li>
+<li><a href="https://egghead.io/instructors/dan-abramov">Redux author Dan Abramov egghead videos</a></li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org0d5a74b">
+<h2 id="org0d5a74b">Thanks</h2>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+history: true,
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>

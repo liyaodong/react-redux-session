@@ -1,5 +1,5 @@
 #+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
-#+TITLE: React Redux best practices
+#+TITLE: React Redux practices
 #+Email: mail@liyaodong.com
 #+Date:
 #+Author:

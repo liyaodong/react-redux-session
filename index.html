@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<title>React Redux best practices</title>
+<title>React Redux practices</title>
 <style type="text/css">
 .underline { text-decoration: underline; }
 </style>
@@ -29,14 +29,14 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,900" rel="stylesheet">
 
 <section>
-<section id="slide-orgb28c276">
-<h2 id="orgb28c276">React Redux</h2>
+<section id="slide-org5cab59f">
+<h2 id="org5cab59f">React Redux</h2>
 <img class="amp-logo" src="./react-redux-logo.jpg">
 </section>
 </section>
 <section>
-<section id="slide-org7b36b54">
-<h2 id="org7b36b54">Outline</h2>
+<section id="slide-org484e2ab">
+<h2 id="org484e2ab">Outline</h2>
 <ul>
 <li>What is react and redux</li>
 <li>How data flows from backend to react UI</li>
@@ -47,12 +47,12 @@
 </section>
 </section>
 <section>
-<section id="slide-org1b5ce2e">
-<h2 id="org1b5ce2e">What is react</h2>
+<section id="slide-org7fda864">
+<h2 id="org7fda864">What is react</h2>
 <img class="stretch" src="https://media.giphy.com/media/xL7PDV9frcudO/giphy.gif">
 </section>
-<section id="slide-orgfb289a1">
-<h3 id="orgfb289a1">Possible answer</h3>
+<section id="slide-org954d441">
+<h3 id="org954d441">Possible answer</h3>
 <ul>
 <li>UI library</li>
 <li>Javascript Framework</li>
@@ -63,8 +63,8 @@
 
 </ul>
 </section>
-<section id="slide-org3d11e0c">
-<h3 id="org3d11e0c">Might be</h3>
+<section id="slide-orgd2217c8">
+<h3 id="orgd2217c8">Might be</h3>
 <div class="org-src-container">
 
 <pre  class="src src-js"><code trim><span style="color: #F92672;">const</span> <span style="color: #FD971F;">react</span> = props: UI =&gt; render<span style="color: #8c8c8c;">(</span>props<span style="color: #8c8c8c;">)</span>;
@@ -73,8 +73,8 @@
 </code></pre>
 </div>
 </section>
-<section id="slide-org9a1e5c2">
-<h3 id="org9a1e5c2">Summary</h3>
+<section id="slide-org5473585">
+<h3 id="org5473585">Summary</h3>
 <ul>
 <li>Write UI with component</li>
 <li>Declarative way to write UI</li>
@@ -86,20 +86,20 @@
 </section>
 </section>
 <section>
-<section id="slide-org63f9af1">
-<h2 id="org63f9af1">What is redux and why</h2>
+<section id="slide-org21d0fb7">
+<h2 id="org21d0fb7">What is redux and why</h2>
 <img class="stretch" src="https://media.giphy.com/media/xL7PDV9frcudO/giphy.gif">
 </section>
-<section id="slide-orgcd0a05d">
-<h3 id="orgcd0a05d">Cross component communication</h3>
+<section id="slide-org628aaca">
+<h3 id="org628aaca">Cross component communication</h3>
 <img class="stretch" src="https://github.com/liyaodong/Frontend-Workshop/raw/master/redux-workshop/md/6024ef30-312a-4c7c-bfd2-eb72fba097ef.png">
 </section>
-<section id="slide-org3083b0f">
-<h3 id="org3083b0f">How data flows inside redux</h3>
+<section id="slide-org545c805">
+<h3 id="org545c805">How data flows inside redux</h3>
 <img class="stretch" src="https://camo.githubusercontent.com/5aba89b6daab934631adffc1f301d17bb273268b/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6d656469612d702e736c69642e65732f75706c6f6164732f3336343831322f696d616765732f323438343535322f415243482d5265647578322d7265616c2e676966">
 </section>
-<section id="slide-org439e7f2">
-<h3 id="org439e7f2">Different part of redux</h3>
+<section id="slide-orgd31a2f7">
+<h3 id="orgd31a2f7">Different part of redux</h3>
 <ul>
 <li>action(domain/event, todos/created)</li>
 <li>reducer</li>
@@ -108,24 +108,24 @@
 
 </ul>
 </section>
-<section id="slide-org930db8b">
-<h3 id="org930db8b">React state vs redux</h3>
+<section id="slide-orgbfac7f0">
+<h3 id="orgbfac7f0">React state vs redux</h3>
 <ul>
 <li>Any other component care about this state?</li>
 <li>Do you want to cache the data?</li>
 
 </ul>
 </section>
-<section id="slide-org45d7662">
-<h3 id="org45d7662">How to split slice for redux</h3>
+<section id="slide-orgde9edd4">
+<h3 id="orgde9edd4">How to split slice for redux</h3>
 <ul>
 <li>Split by domain(global level)</li>
 <li>Split by components</li>
 
 </ul>
 </section>
-<section id="slide-org42baaab">
-<h3 id="org42baaab">Testing redux</h3>
+<section id="slide-org02e2c63">
+<h3 id="org02e2c63">Testing redux</h3>
 <ul>
 <li>Pure function</li>
 <li>Composable selector</li>
@@ -134,14 +134,14 @@
 </section>
 </section>
 <section>
-<section id="slide-org44da179">
-<h2 id="org44da179">State from end to end</h2>
+<section id="slide-org50a85d7">
+<h2 id="org50a85d7">State from end to end</h2>
 <p>
 render -&gt; fetch -&gt; store response -&gt; trigger UI update
 </p>
 </section>
-<section id="slide-orgc79d578">
-<h3 id="orgc79d578">Type of the state</h3>
+<section id="slide-org1ca552b">
+<h3 id="org1ca552b">Type of the state</h3>
 <ul>
 <li>state from backend</li>
 <li>state that redux needed</li>
@@ -150,8 +150,8 @@ render -&gt; fetch -&gt; store response -&gt; trigger UI update
 
 </ul>
 </section>
-<section id="slide-org90ad21b">
-<h3 id="org90ad21b">Type of the state</h3>
+<section id="slide-org7cd7de2">
+<h3 id="org7cd7de2">Type of the state</h3>
 <ul>
 <li>business/domain level</li>
 <li>UI level</li>
@@ -160,13 +160,13 @@ render -&gt; fetch -&gt; store response -&gt; trigger UI update
 </section>
 </section>
 <section>
-<section id="slide-org7347dcb">
-<h2 id="org7347dcb">Debugging Tips</h2>
-<div class="outline-text-2" id="text-org7347dcb">
+<section id="slide-org2058f4b">
+<h2 id="org2058f4b">Debugging Tips</h2>
+<div class="outline-text-2" id="text-org2058f4b">
 </div>
 </section>
-<section id="slide-orga73c214">
-<h3 id="orga73c214">DevTool</h3>
+<section id="slide-orga79592d">
+<h3 id="orga79592d">DevTool</h3>
 <ul>
 <li><a href="https://github.com/reduxjs/redux-devtools">Redux DevTool</a></li>
 <li><a href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en">React DevTool</a></li>
@@ -174,8 +174,8 @@ render -&gt; fetch -&gt; store response -&gt; trigger UI update
 
 </ul>
 </section>
-<section id="slide-org4d1f6aa">
-<h3 id="org4d1f6aa">Split the program into smaller pieces</h3>
+<section id="slide-org482ce2f">
+<h3 id="org482ce2f">Split the program into smaller pieces</h3>
 <ul>
 <li>React Component Props</li>
 <li>Redux actions and payload</li>
@@ -186,13 +186,13 @@ render -&gt; fetch -&gt; store response -&gt; trigger UI update
 </section>
 </section>
 <section>
-<section id="slide-org01d18a3">
-<h2 id="org01d18a3">Q&amp;A</h2>
+<section id="slide-org3973248">
+<h2 id="org3973248">Q&amp;A</h2>
 </section>
 </section>
 <section>
-<section id="slide-org6111923">
-<h2 id="org6111923">Further reading</h2>
+<section id="slide-orgc5621bc">
+<h2 id="orgc5621bc">Further reading</h2>
 <ul>
 <li><a href="https://overreacted.io/react-as-a-ui-runtime/">React as a UI Runtime</a></li>
 <li><a href="https://redux.js.org/style-guide/style-guide">Redux style guide</a></li>
@@ -203,8 +203,8 @@ render -&gt; fetch -&gt; store response -&gt; trigger UI update
 </section>
 </section>
 <section>
-<section id="slide-org0d5a74b">
-<h2 id="org0d5a74b">Thanks</h2>
+<section id="slide-org2732c53">
+<h2 id="org2732c53">Thanks</h2>
 </section>
 </section>
 </div>
